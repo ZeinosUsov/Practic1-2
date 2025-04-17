@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жалобная Книга</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Добавить жалобу</h1>
+
+    <form id="complaint-form">
+        <label for="complaint">Жалоба:</label>
+        <textarea id="complaint" name="complaint" rows="4" required></textarea>
+        <button type="submit">Отправить жалобу</button>
+    </form>
+
+    <h2>Список жалоб:</h2>
+    <ul id="complaint-list">
+        <!-- Здесь будут отображаться жалобы -->
+    </ul>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const complaintForm = document.getElementById('complaint-form');
+        const complaintList = document.getElementById('complaint-list');
+
+        complaintForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const complaintText = document.getElementById('complaint').value;
+
+            if (complaintText.trim() !== '') {
+
+                const listItem = document.createElement('li');
+                listItem.textContent = complaintText;
+
+                complaintList.appendChild(listItem);
+
+                document.getElementById('complaint').value = '';
+            }
+        });
+    });
+</script>
+</body>
+</html>
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Жалобная Книга</title>-->
+<!--    <style>-->
+<!--        /*  ...  (ваш CSS код здесь) ... */-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="container">-->
+<!--    <h1>Жалобная Книга</h1>-->
+
+<!--    <form id="complaint-form" action="process_complaint.php" method="POST">-->
+<!--        <label for="complaint">Жалоба:</label>-->
+<!--        <textarea id="complaint" name="complaint" rows="4" required></textarea>-->
+<!--        <button type="submit">Отправить жалобу</button>-->
+<!--    </form>-->
+
+<!--    <h2>Список жалоб:</h2>-->
+<!--    <ul id="complaint-list">-->
+<!--        <?php-->
+<!--            // PHP код для отображения жалоб-->
+<!--            require_once 'ComplainController.php';-->
+<!--            $controller = new ComplainController();-->
+<!--            $complaints = $controller->getComplaints();-->
+<!--        foreach ($complaints as $complaint) {-->
+<!--        echo '<li>' . htmlspecialchars($complaint) . '</li>'; // htmlspecialchars для безопасности-->
+<!--        }-->
+<!--        ?>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    // JavaScript код (можно упростить, т.к. теперь форма отправляется на сервер)-->
+<!--    // document.addEventListener('DOMContentLoaded', function() { ... });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
